@@ -40,6 +40,7 @@ def zel1_funtion () : Unit = {
     sp()
 }
 cleari
+var vopr = readln("эта версия устарела. Вы хотите зайти. Если да нажпите ENTRE")
 println("Версия : 0_0_2")
 var ded = true
 var point = 0
