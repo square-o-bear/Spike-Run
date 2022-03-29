@@ -55,10 +55,11 @@ def zel1_funtion () : Unit = {
 clear
 cleari
 println("==-- создатели --==")
-println("Михаилу Ушакову - программист")
+println("Михаилу Ушакову - программист и дизайнер")
 println("Ване Денисову - программист")
 println("Вова Уласевич - создатель идей")
-println("Демид Большакову - дезайнер")
+println("Демиду Большакову - дезайнер")
+println("Ссылка на гид хаб с игрой https://github.com/square-o-bear/Spike-Run")
 println("==-- --==")
 println("Версия : 0_0_3 | Язык програмирования kojo")
 println("Управление на клавеши :")
@@ -70,17 +71,21 @@ var ded = true
 var point = 0
 var TOPpoint = 0
 var w = 10
+var fon = Picture.image("fon.jpeg")
+fon.draw()
+fon.setPosition(-1000, -1000)
+fon.scale(10)
 var zel1_x = random(-250, 250)
 var zel1_y = random(-250, 250)
 var zel1 = Picture.image("zel.png")
 zel1.draw()
-zel1.scale(0.23)
+zel1.scale(0.3)
 zel1.setPosition(zel1_x, zel1_y)
 var kartinka1_x = 0
 var kartinka1_y = 0
-var kartinka1 = Picture.image("pers.jpeg")
+var kartinka1 = Picture.image("pers.png")
 kartinka1.draw()
-kartinka1.scale(0.36)
+kartinka1.scale(2.5)
 kartinka1.setPosition(kartinka1_x, kartinka1_y)
 var scallKaktus = 0.23
 var kaktusTextur = "kaktus.png"
@@ -249,14 +254,22 @@ animate {
 }
 /* 
     ЧТО МОЖНО ОЖИДАТЬ В СЛЕДУЮЩЕЙ ВЕРСИИ
-1) Красивый фон (не белый)
+1) Обновление текстур
     ДОБАВЛЕННО В ЭТОЙ ВЕРСИИ
-1) Ещё 4 кактуса
-2) +2 ачивки (теперь их 2)
-3) новый вид :
+  Версия A
+A1) Ещё 4 кактуса
+A2) +2 ачивки (теперь их 2)
+A3) новый вид :
    a. игрок
    b. зелье
    c. вернули кактус
-4) техническии изменения (размер и вид для кактусов в переменных)
-5) Пишится управлене
+A4) техническии изменения (размер и вид для кактусов в переменных)
+A5) Пишится управлене
+  Версия B
+B1) Добавлени красивый фон (не белый(а оранжева жёлтый))
+B2) Опять обновлены текстуры
+   a. игрок(нарисовал сам)
+   b. злье
+   c. вернули кактусы из первой версии (хотя вы её и не видели)
+B3)
 */
