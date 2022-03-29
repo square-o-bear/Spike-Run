@@ -11,10 +11,8 @@ def sp() : Unit = {
     zel1.setPosition(zel1_x, zel1_y)
 }
 def restart() : Unit = {
-    println("==-- --==")
     println("TOPpoint : "+TOPpoint)
     ded = true
-    point = 0
     w = 10
     kartinka1_x = 0
     kartinka1_y = 0
@@ -68,6 +66,7 @@ println("S - вниз   W - вверх")
 println("R - рестарт")
 
 var ded = true
+var hp = 3
 var point = 0
 var TOPpoint = 0
 var w = 10
@@ -75,17 +74,23 @@ var fon = Picture.image("fon.jpeg")
 fon.draw()
 fon.setPosition(-1000, -1000)
 fon.scale(10)
+var log = Picture.image("log.png")
+log.draw()
+log.scale(4)
+log.setPosition(-30, -30)
+var z = readInt("скорость кактусов")
+log.setPosition(0, 1000)
 var zel1_x = random(-250, 250)
 var zel1_y = random(-250, 250)
 var zel1 = Picture.image("zel.png")
 zel1.draw()
-zel1.scale(0.3)
+zel1.scale(0.2)
 zel1.setPosition(zel1_x, zel1_y)
 var kartinka1_x = 0
 var kartinka1_y = 0
-var kartinka1 = Picture.image("pers.png")
+var kartinka1 = Picture.image("pers_vl.png")
 kartinka1.draw()
-kartinka1.scale(2.5)
+kartinka1.scale(2.7)
 kartinka1.setPosition(kartinka1_x, kartinka1_y)
 var scallKaktus = 0.23
 var kaktusTextur = "kaktus.png"
@@ -146,7 +151,9 @@ kaktus8.rotate(90)
 var pause = true
 var ach1 = true
 var ach2 = true
-var z = readInt("скорость кактусов")
+
+println("==-- --==")
+println("hp : "+hp)
 animate {
     onKeyPress {
     case Kc.VK_A =>
@@ -245,31 +252,28 @@ animate {
         ach1 = false
     }
     if (kartinka1.intersects(kaktus1) || kartinka1.intersects(kaktus2) || kartinka1.intersects(kaktus3) || kartinka1.intersects(kaktus4) || kartinka1.intersects(kaktus5) || kartinka1.intersects(kaktus6) || kartinka1.intersects(kaktus7) || kartinka1.intersects(kaktus8)) {
+        hp -= 1
+        if (hp < 1) {
+            println("==-- --==")
+            point = 0
+            hp = 3
+            if (ach2) {
+                println("ДОСТИЖЕНИЕ: Не Большая Царапена (умрите)")
+                ach2 = false
+            }
+        }
+        else {
+            println("Ослалось "+hp+": hp")
+        }
+        
         restart()
-        if (ach2) {
-            println("ДОСТИЖЕНИЕ: Не Большая Царапена (умрите)")
-            ach2 = false
-        }        
     }
 }
 /* 
     ЧТО МОЖНО ОЖИДАТЬ В СЛЕДУЮЩЕЙ ВЕРСИИ
-1) Обновление текстур
+1)
     ДОБАВЛЕННО В ЭТОЙ ВЕРСИИ
   Версия A
-A1) Ещё 4 кактуса
-A2) +2 ачивки (теперь их 2)
-A3) новый вид :
-   a. игрок
-   b. зелье
-   c. вернули кактус
-A4) техническии изменения (размер и вид для кактусов в переменных)
-A5) Пишится управлене
-  Версия B
-B1) Добавлени красивый фон (не белый(а оранжева жёлтый))
-B2) Опять обновлены текстуры
-   a. игрок(нарисовал сам)
-   b. злье
-   c. вернули кактусы из первой версии (хотя вы её и не видели)
-B3)
+1) обновленены:
+    a. зелье
 */
