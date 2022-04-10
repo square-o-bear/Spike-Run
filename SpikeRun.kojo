@@ -54,27 +54,34 @@ clear
 cleari
 println("==-- создатели --==")
 println("Михаилу Ушакову - программист и дизайнер")
-println("Ване Денисову - программист")
 println("Вова Уласевич - создатель идей")
 println("Демиду Большакову - дезайнер")
+println("Ване Денисову - программист")
 println("Ссылка на гид хаб с игрой https://github.com/square-o-bear/Spike-Run")
 println("==-- --==")
-println("Версия : 0_0_3 | Язык програмирования kojo")
+println("Версия : 0_0_6 | Язык програмирования kojo")
 println("Управление на клавеши :")
 println("A - влево  D - вправо")
 println("S - вниз   W - вверх")
 println("R - рестарт")
 
+var level = readInt("Какой уравень? (День / Ночь)")
 var ded = true
 var hp = 3
 var point = 0
 var TOPpoint = 0
 var w = 10
-var fon = Picture.image("fon.jpeg")
+var fon = Picture.image("fon1.jpeg")
+if (level == 2) {
+    fon = Picture.image("fon2.png")
+}
 fon.draw()
 fon.setPosition(-1000, -1000)
 fon.scale(10)
-var log = Picture.image("log.png")
+var log = Picture.image("log1.png")
+if (level == 2) {
+    log = Picture.image("log2.png")
+}
 log.draw()
 log.scale(4)
 log.setPosition(-30, -30)
@@ -82,18 +89,27 @@ var z = readInt("скорость кактусов")
 log.setPosition(0, 1000)
 var zel1_x = random(-250, 250)
 var zel1_y = random(-250, 250)
-var zel1 = Picture.image("zel.png")
+var zel1 = Picture.image("zel1.png")
+if (level == 2) {
+    zel1 = Picture.image("zel2.png")
+}
 zel1.draw()
 zel1.scale(0.2)
 zel1.setPosition(zel1_x, zel1_y)
 var kartinka1_x = 0
 var kartinka1_y = 0
-var kartinka1 = Picture.image("pers_vl.png")
+var kartinka1 = Picture.image("pers1.png")
+if (level == 2) {
+    kartinka1 = Picture.image("pers2.png")
+}
 kartinka1.draw()
 kartinka1.scale(2.7)
 kartinka1.setPosition(kartinka1_x, kartinka1_y)
 var scallKaktus = 0.23
-var kaktusTextur = "kaktus.png"
+var kaktusTextur = "kaktus1.png"
+if (level == 2){
+    kaktusTextur = "kaktus2.png"
+}
 var kaktus1_x = random(kartinka1_x-100, kartinka1_x+100)
 var kaktus1_y = random(240, 260)
 var kaktus1 = Picture.image(kaktusTextur)
@@ -151,6 +167,7 @@ kaktus8.rotate(90)
 var pause = true
 var ach1 = true
 var ach2 = true
+var ach3 = true
 
 println("==-- --==")
 println("hp : "+hp)
@@ -166,8 +183,11 @@ animate {
         kartinka1_y += w
     case Kc.VK_R =>
         restart()
-//    case Kc.VK_X =>
-//        stopAnimate()
+        if (ach3) {
+            println ("ДОСТИЖЕНИЕ: Мирный Перезапуск (перезапустите игру)")
+            ach3 = false
+        }
+        println("==-- --==")
     }
     if (kartinka1_x >= 300) {
         kartinka1_x *= (-1)
@@ -226,7 +246,7 @@ animate {
     if (kaktus8_x <= -300) {
         kaktus8_x = random(260, 240)
         kaktus8_y = random(kartinka1_y-100, kartinka1_y+100)
-        point += 1
+        point += 11
         println("point : "+point)
     }
     if (ded) {
@@ -263,7 +283,7 @@ animate {
             }
         }
         else {
-            println("Ослалось "+hp+": hp")
+            println("Ослалось "+hp+":hp")
         }
         
         restart()
@@ -273,7 +293,11 @@ animate {
     ЧТО МОЖНО ОЖИДАТЬ В СЛЕДУЮЩЕЙ ВЕРСИИ
 1)
     ДОБАВЛЕННО В ЭТОЙ ВЕРСИИ
-  Версия A
-1) обновленены:
-    a. зелье
+1) Новый левел (ночь)
+    а) персонаж
+    б) кактус
+    в) лого
+    г) фон
+    д) зелье
+2) Новая ачивка (Мирный Рестарт)
 */
